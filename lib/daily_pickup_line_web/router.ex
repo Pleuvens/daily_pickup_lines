@@ -1,6 +1,8 @@
 defmodule DailyPickupLineWeb.Router do
   use DailyPickupLineWeb, :router
 
+  import Backpex.Router
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -24,6 +26,16 @@ defmodule DailyPickupLineWeb.Router do
   # scope "/api", DailyPickupLineWeb do
   #   pipe_through :api
   # end
+
+  scope "/admin", DailyPickupLineWeb do
+    pipe_through :browser
+
+    backpex_routes()
+
+    live_session :default, on_mount: Backpex.InitAssigns do
+      live_resources("/pickup_lines", AdminPickupLinesLive)
+    end
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:daily_pickup_line, :dev_routes) do

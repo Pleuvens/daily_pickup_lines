@@ -4,7 +4,7 @@ defmodule DailyPickupLine.Repo.Migrations.AddPickupLineTable do
   def up do
     create table(:pickup_lines, primary_key: false) do
       add :id, :binary_id, primary_key: true
-      add :content, :jsonb, null: false
+      add :content, :jsonb, null: false, default: "[]"
       add :status, :string, null: false
       add :displayed_at, :utc_datetime, null: true
 
