@@ -604,7 +604,7 @@ defmodule DailyPickupLineWeb.CoreComponents do
 
   def pickup_line(assigns) do
     ~H"""
-    <p class="text-lg font-semibold leading-8 text-zinc-800"><%= @pickup_line %></p>
+    <p class="text-2xl font-light leading-8 italic"><%= @pickup_line %></p>
     """
   end
 
