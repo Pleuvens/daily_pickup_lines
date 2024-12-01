@@ -65,6 +65,8 @@ config :daily_pickup_line, DailyPickupLineWeb.Endpoint,
 # Enable dev routes for dashboard and mailbox
 config :daily_pickup_line, dev_routes: true
 
+config :daily_pickup_line, admin_basic_auth_password: "admin"
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 

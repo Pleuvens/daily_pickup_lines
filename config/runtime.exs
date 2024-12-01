@@ -53,6 +53,8 @@ if config_env() == :prod do
 
   config :daily_pickup_line, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
+  config :daily_pickup_line, admin_basic_auth_password: System.fetch_env!("ADMIN_AUTH_PASSWORD")
+
   config :daily_pickup_line, DailyPickupLineWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
     http: [
