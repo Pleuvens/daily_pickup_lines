@@ -14,6 +14,7 @@ defmodule DailyPickupLineWeb.CoreComponents do
 
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
+  use Gettext, backend: DailyPickupLine.Gettext
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
