@@ -6,7 +6,15 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :daily_pickup_line, DailyPickupLineWeb.Endpoint,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [host: "dailypickuplines.pleuvens.com", scheme: "https", port: 443],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  adapter: Bandit.PhoenixAdapter,
+  render_errors: [
+    formats: [html: DailyPickupLineWeb.ErrorHTML, json: DailyPickupLineWeb.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: DailyPickupLine.PubSub,
+  live_view: [signing_salt: "afpgdRQW"]
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: DailyPickupLine.Finch
